@@ -1,3 +1,3 @@
-# 来源资料契约
+# customs-portal 来源契约
 
-每份本地清单标识来源类别、资产路径、字节长度和 SHA-256。`Source.read_at` 保留读取范围；`Replay.next` 依次返回冻结请求和响应，不隐含远端完整性或协议语义。一个记录缺席不等于远端已删除，镜像响应和来源版本也不能仅凭地址推断相同。
+来源清单中的资产长度与 SHA-256 用于核对本地原文字节。文档的 collection 与 protocol 必须匹配清单，现有记录类型包括 principal, draft, attachment, receipt。每条记录以 kind、id、version 定位，refs 指向同集合的其他记录，payload 原样留存。来源版本冲突会中断接收；本地引用闭合只表示当前收到的引用能定位，不表示远端序列或授权资料已经完整。

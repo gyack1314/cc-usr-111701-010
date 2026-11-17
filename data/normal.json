@@ -1,18 +1,13 @@
 {
   "kind": "source-records",
+  "protocol": "customs-portal",
+  "collection": "sample-010",
   "assets": [
     {
-      "path": "capture.bin",
-      "bytes": 32,
-      "sha256": "8d4822b45635b61a94af37c2be8d8a96acccccdd2c05383752c4ed0bf51012c3"
+      "path": "source.json",
+      "bytes": 909,
+      "sha256": "848a735ed4a9c339f70cc4b15546d929e1c72cd8bab682c1137239081c1521a1"
     }
   ],
-  "chunk_lengths": [
-    1,
-    4,
-    7,
-    3,
-    17
-  ],
-  "close_epoch": true
+  "calls": []
 }

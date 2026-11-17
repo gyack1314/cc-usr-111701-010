@@ -1,10 +1,13 @@
-"""清点冻结来源记录与原始资产，不解释外部协议。"""
+"""核对本领域冻结来源的基本结构与记录身份。"""
+import json
 from .io import asset
+PROTOCOL='customs-portal'
+KINDS=set(['principal', 'draft', 'attachment', 'receipt'])
 def summarize(v,root):
- if v['kind']!='source-records':raise ValueError('资料类别不匹配')
- rows=v['assets']
- if not isinstance(rows,list) or not rows:raise ValueError('资产清单为空')
- paths=[x['path'] for x in rows]
- if len(paths)!=len(set(paths)):raise ValueError('重复资产路径')
- total=sum(len(asset(root,r)) for r in rows)
- return {'kind':v['kind'],'asset_count':len(rows),'raw_bytes':total,'http_records':len(v.get('calls',[]))}
+ if v.get('kind')!='source-records' or v.get('protocol')!=PROTOCOL:raise ValueError('来源协议不匹配')
+ raw=asset(root,v['assets'][0]);doc=json.loads(raw.decode('utf-8'))
+ if doc.get('protocol')!=PROTOCOL or doc.get('collection')!=v.get('collection'):raise ValueError('来源文档不匹配')
+ rows=doc.get('records')
+ if not isinstance(rows,list) or not rows:raise ValueError('记录为空')
+ if any(row.get('kind') not in KINDS or not row.get('id') or not row.get('version') for row in rows):raise ValueError('记录身份非法')
+ return {'protocol':PROTOCOL,'collection':doc['collection'],'record_count':len(rows),'kinds':sorted({row['kind'] for row in rows}),'raw_bytes':len(raw)}

@@ -1,0 +1,52 @@
+{
+  "protocol": "customs-portal",
+  "collection": "sample-010",
+  "records": [
+    {
+      "kind": "principal",
+      "id": "principal-1",
+      "version": "v1",
+      "refs": [],
+      "payload": {
+        "source": "synthetic",
+        "position": 0
+      }
+    },
+    {
+      "kind": "draft",
+      "id": "draft-2",
+      "version": "v1",
+      "refs": [
+        "principal-1"
+      ],
+      "payload": {
+        "source": "synthetic",
+        "position": 1
+      }
+    },
+    {
+      "kind": "attachment",
+      "id": "attachment-3",
+      "version": "v1",
+      "refs": [
+        "draft-2"
+      ],
+      "payload": {
+        "source": "synthetic",
+        "position": 2
+      }
+    },
+    {
+      "kind": "receipt",
+      "id": "receipt-4",
+      "version": "v1",
+      "refs": [
+        "attachment-3"
+      ],
+      "payload": {
+        "source": "synthetic",
+        "position": 3
+      }
+    }
+  ]
+}
