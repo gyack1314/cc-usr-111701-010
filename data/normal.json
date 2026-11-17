@@ -1,0 +1,18 @@
+{
+  "kind": "source-records",
+  "assets": [
+    {
+      "path": "capture.bin",
+      "bytes": 32,
+      "sha256": "8d4822b45635b61a94af37c2be8d8a96acccccdd2c05383752c4ed0bf51012c3"
+    }
+  ],
+  "chunk_lengths": [
+    1,
+    4,
+    7,
+    3,
+    17
+  ],
+  "close_epoch": true
+}
