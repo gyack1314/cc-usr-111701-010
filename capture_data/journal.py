@@ -6,7 +6,7 @@ SCHEMA="CREATE TABLE IF NOT EXISTS sources(collection TEXT,digest TEXT,raw BLOB,
 def connect(path):
  c=sqlite3.connect(path);c.execute('PRAGMA foreign_keys=ON');c.executescript(SCHEMA);return c
 def receive(c,manifest,root):
- raw=asset(root,manifest['assets'][0]);digest=hashlib.sha256(raw).hexdigest();doc=decode(raw,manifest) if manifest['assets'][0]['path']=='protocol-source.bin' else json.loads(raw.decode('utf-8'))
+ raw=asset(root,manifest['assets'][0]);digest=hashlib.sha256(raw).hexdigest();doc=decode(raw,manifest) if manifest['assets'][0]['path'] in ('protocol-source.bin','conflict-source.bin') else json.loads(raw.decode('utf-8'))
  if doc.get('collection')!=manifest['collection'] or doc.get('protocol')!=manifest['protocol']:raise ValueError('来源身份不匹配')
  with c:
   c.execute('INSERT OR IGNORE INTO sources VALUES(?,?,?)',(doc['collection'],digest,raw))

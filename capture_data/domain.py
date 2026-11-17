@@ -6,7 +6,7 @@ PROTOCOL='customs-portal'
 KINDS=set(['principal', 'draft', 'attachment', 'receipt'])
 def summarize(v,root):
  if v.get('kind')!='source-records' or v.get('protocol')!=PROTOCOL:raise ValueError('来源协议不匹配')
- raw=asset(root,v['assets'][0]);doc=decode(raw,v) if v['assets'][0]['path']=='protocol-source.bin' else json.loads(raw.decode('utf-8'))
+ raw=asset(root,v['assets'][0]);doc=decode(raw,v) if v['assets'][0]['path'] in ('protocol-source.bin','conflict-source.bin') else json.loads(raw.decode('utf-8'))
  if doc.get('protocol')!=PROTOCOL or doc.get('collection')!=v.get('collection'):raise ValueError('来源文档不匹配')
  rows=doc.get('records')
  if not isinstance(rows,list) or not rows:raise ValueError('记录为空')
