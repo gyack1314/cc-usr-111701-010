@@ -11,3 +11,5 @@ python -m capture_data.cli inspect data/normal.json
 ```
 
 Dockerfile 提供 Linux 运行环境；`docker build -t source-capture .` 构建，`docker run --rm source-capture python -m unittest discover -s tests -v` 运行测试。
+
+协议样例可通过 python -m capture_data.cli inspect data/protocol-case.json 查看。该命令仍只说明现有接收能力，不证明远端连续性。

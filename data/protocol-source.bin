@@ -1,0 +1,19 @@
+{
+  "principal": "agent-1",
+  "draft": "d-17",
+  "revision": "r3",
+  "attachments": [
+    {
+      "id": "invoice-8",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "received"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "receipt-21",
+      "status": "needs_correction",
+      "draft_revision": "r3"
+    }
+  ]
+}

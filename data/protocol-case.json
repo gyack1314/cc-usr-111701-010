@@ -1,0 +1,14 @@
+{
+  "kind": "source-records",
+  "protocol": "customs-portal",
+  "collection": "protocol-sample",
+  "source_url": "https://customs.example.test/agents/agent-1/drafts/d-17",
+  "assets": [
+    {
+      "path": "protocol-source.bin",
+      "bytes": 363,
+      "sha256": "d78f3518f7402990f676aa996977d99210e8ff2cb9f0d0462f16a571a638e58d"
+    }
+  ],
+  "calls": []
+}
